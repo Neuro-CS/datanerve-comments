@@ -1,0 +1,11 @@
+{
+  "origins": [
+    "https://datanerve.net",
+    "https://datanerve-preview.netlify.app"
+  ],
+  "originsRegex": [
+    "http://localhost:[0-9]+",
+    "https://[a-z0-9-]+--YOUR-NETLIFY-SITE\\.netlify\\.app"
+  ],
+  "defaultCommentOrder": "oldest"
+}

@@ -1,0 +1,52 @@
+# Locks comment threads (GitHub Discussions) once they're older than LOCK_AFTER_DAYS,
+# so old posts stop collecting comments without you having to watch them.
+# Runs every Monday, or on demand from the Actions tab ("Run workflow").
+name: Lock old comment threads
+
+on:
+  schedule:
+    - cron: "17 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  discussions: write
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Lock old discussions
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          LOCK_AFTER_DAYS: "90"
+        run: |
+          set -euo pipefail
+          owner="${REPO%/*}"
+          name="${REPO#*/}"
+          cutoff=$(date -u -d "-${LOCK_AFTER_DAYS} days" +%s)
+          cursor=""
+          while :; do
+            page=$(gh api graphql -F owner="$owner" -F name="$name" ${cursor:+-F cursor="$cursor"} -f query='
+              query($owner: String!, $name: String!, $cursor: String) {
+                repository(owner: $owner, name: $name) {
+                  discussions(first: 100, after: $cursor) {
+                    pageInfo { hasNextPage endCursor }
+                    nodes { id number title locked createdAt }
+                  }
+                }
+              }')
+            echo "$page" | jq -r --argjson cutoff "$cutoff" '
+              .data.repository.discussions.nodes[]
+              | select(.locked == false and (.createdAt | fromdateiso8601) < $cutoff)
+              | "\(.id)\t\(.number)\t\(.title)"' |
+            while IFS=$'\t' read -r id number title; do
+              gh api graphql -f id="$id" -f query='
+                mutation($id: ID!) { lockLockable(input: { lockableId: $id }) { lockedRecord { locked } } }' > /dev/null
+              echo "Locked #$number: $title"
+            done
+            if [ "$(echo "$page" | jq -r '.data.repository.discussions.pageInfo.hasNextPage')" != "true" ]; then
+              break
+            fi
+            cursor=$(echo "$page" | jq -r '.data.repository.discussions.pageInfo.endCursor')
+          done
