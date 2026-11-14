@@ -5,7 +5,7 @@
   ],
   "originsRegex": [
     "http://localhost:[0-9]+",
-    "https://[a-z0-9-]+--YOUR-NETLIFY-SITE\\.netlify\\.app"
+    "https://[a-z0-9-]+--datanerve-preview\\.netlify\\.app"
   ],
   "defaultCommentOrder": "oldest"
 }
