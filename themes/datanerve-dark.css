@@ -1,0 +1,123 @@
+/* datanerve dark theme for giscus.
+ * Matches the site's dark mode: dark green page (shown through), soft off-white text,
+ * light-plum links and a plum "Comment" button. Fonts load from the public npm CDN
+ * because the site itself may be private.
+ *
+ * Based on giscus's dark theme (MIT, Copyright (c) 2021 Sage M. Abdullah et al.),
+ * whose variables come from GitHub Primer (MIT, Copyright (c) 2018 GitHub Inc.,
+ * https://github.com/primer/primitives/blob/main/LICENSE).
+ */
+@import url("https://cdn.jsdelivr.net/npm/@fontsource-variable/source-serif-4@5.3.1/opsz.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/familjen-grotesk@5.3.0/500.css");
+@import url("https://cdn.jsdelivr.net/npm/@fontsource/familjen-grotesk@5.3.0/600.css");
+
+main {
+  color-scheme: dark;
+
+  /* code inside comments */
+  --color-prettylights-syntax-comment: #9aa8a3;
+  --color-prettylights-syntax-constant: #8fd1b5;
+  --color-prettylights-syntax-entity: #e3a8d3;
+  --color-prettylights-syntax-storage-modifier-import: #e3eae7;
+  --color-prettylights-syntax-entity-tag: #8fd1b5;
+  --color-prettylights-syntax-keyword: #e3a8d3;
+  --color-prettylights-syntax-string: #a9dcc8;
+  --color-prettylights-syntax-variable: #ddae45;
+  --color-prettylights-syntax-brackethighlighter-unmatched: #eb876f;
+  --color-prettylights-syntax-invalid-illegal-text: #f2f6f4;
+  --color-prettylights-syntax-invalid-illegal-bg: #7a2340;
+  --color-prettylights-syntax-carriage-return-text: #f2f6f4;
+  --color-prettylights-syntax-carriage-return-bg: #7a2340;
+  --color-prettylights-syntax-string-regexp: #8fd1b5;
+  --color-prettylights-syntax-markup-list: #ddae45;
+  --color-prettylights-syntax-markup-heading: #e3a8d3;
+  --color-prettylights-syntax-markup-italic: #e3eae7;
+  --color-prettylights-syntax-markup-bold: #e3eae7;
+  --color-prettylights-syntax-markup-deleted-text: #f4cfe9;
+  --color-prettylights-syntax-markup-deleted-bg: #4a3046;
+  --color-prettylights-syntax-markup-inserted-text: #cfe3db;
+  --color-prettylights-syntax-markup-inserted-bg: #24413a;
+  --color-prettylights-syntax-markup-changed-text: #e8c77a;
+  --color-prettylights-syntax-markup-changed-bg: #2b2617;
+  --color-prettylights-syntax-markup-ignored-text: #e3eae7;
+  --color-prettylights-syntax-markup-ignored-bg: #2f6152;
+  --color-prettylights-syntax-meta-diff-range: #e3a8d3;
+  --color-prettylights-syntax-brackethighlighter-angle: #9aa8a3;
+  --color-prettylights-syntax-sublimelinter-gutter-mark: #4a5b56;
+  --color-prettylights-syntax-constant-other-reference-link: #a9dcc8;
+
+  /* buttons */
+  --color-btn-text: #e3eae7;
+  --color-btn-bg: #1b2522;
+  --color-btn-border: #2d3a36;
+  --color-btn-shadow: 0 0 transparent;
+  --color-btn-inset-shadow: 0 0 transparent;
+  --color-btn-hover-bg: #24302c;
+  --color-btn-hover-border: #4a5b56;
+  --color-btn-active-bg: #2d3a36;
+  --color-btn-active-border: #5e7069;
+  --color-btn-selected-bg: #1b2522;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #8e3f7e;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-shadow: 0 0 transparent;
+  --color-btn-primary-inset-shadow: 0 0 transparent;
+  --color-btn-primary-hover-bg: #a24d90;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-selected-bg: #8e3f7e;
+  --color-btn-primary-selected-shadow: 0 0 transparent;
+  --color-btn-primary-disabled-text: rgb(255 255 255 / 55%);
+  --color-btn-primary-disabled-bg: rgb(142 63 126 / 55%);
+  --color-btn-primary-disabled-border: transparent;
+  --color-action-list-item-default-hover-bg: rgb(227 234 231 / 8%);
+  --color-segmented-control-bg: rgb(227 234 231 / 6%);
+  --color-segmented-control-button-bg: #141b19;
+  --color-segmented-control-button-selected-border: #4a5b56;
+
+  /* text, surfaces, borders */
+  --color-fg-default: #e3eae7;
+  --color-fg-muted: #9aa8a3;
+  --color-fg-subtle: #7e8c87;
+  --color-canvas-default: transparent;   /* the site's dark green shows through */
+  --color-canvas-overlay: #1b2522;
+  --color-canvas-inset: #101614;
+  --color-canvas-subtle: #1b2522;
+  --color-border-default: #2d3a36;
+  --color-border-muted: #222d2a;
+  --color-neutral-muted: rgb(154 168 163 / 25%);
+
+  /* links and highlights: light plum, as on the site */
+  --color-accent-fg: #e3a8d3;
+  --color-accent-emphasis: #b0659f;
+  --color-accent-muted: rgb(227 168 211 / 40%);
+  --color-accent-subtle: rgb(227 168 211 / 10%);
+  --color-success-fg: #4cc09c;
+  --color-attention-fg: #ddae45;
+  --color-attention-muted: rgb(221 174 69 / 40%);
+  --color-attention-subtle: rgb(221 174 69 / 12%);
+  --color-danger-fg: #eb876f;
+  --color-danger-muted: rgb(235 135 111 / 40%);
+  --color-danger-subtle: rgb(235 135 111 / 10%);
+  --color-primer-shadow-inset: 0 0 transparent;
+  --color-scale-gray-7: #24302c;
+  --color-scale-blue-8: #4a3046;
+
+  --color-social-reaction-bg-hover: var(--color-scale-gray-7);
+  --color-social-reaction-bg-reacted-hover: var(--color-scale-blue-8);
+
+  font-family: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* comment text in the site's reading font */
+main .markdown {
+  font-family: "Source Serif 4 Variable", Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+main .pagination-loader-container {
+  background-image: url("https://github.com/images/modules/pulls/progressive-disclosure-line-dark.svg");
+}
+main .gsc-loading-image {
+  background-image: url("https://github.githubassets.com/images/mona-loading-dark.gif");
+}
